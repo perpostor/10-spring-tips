@@ -1,8 +1,8 @@
-package com.example.springtips.strategy;
+package demo.strategy;
 
 import org.springframework.stereotype.Service;
 
-import static com.example.springtips.strategy.Strategy.AGGRESSIVE;
+import static demo.strategy.Strategy.AGGRESSIVE;
 
 @Service(AGGRESSIVE)
 public class AggressivePricingStrategy implements PricingStrategy {

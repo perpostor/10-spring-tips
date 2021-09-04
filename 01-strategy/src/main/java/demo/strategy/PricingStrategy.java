@@ -1,4 +1,4 @@
-package com.example.springtips.strategy;
+package demo.strategy;
 
 public interface PricingStrategy {
 

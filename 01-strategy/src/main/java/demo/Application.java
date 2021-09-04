@@ -1,4 +1,4 @@
-package com.example.springtips;
+package demo;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class Application {
 	@PostConstruct
 	public void logPrices() {
 		LOGGER.info("Aggressive price: {}", pricingCalculator.appraiseStock(true));
-		LOGGER.info("Non-aggressive price: {}", pricingCalculator.appraiseStock(false));
+		LOGGER.info("Timid price: {}", pricingCalculator.appraiseStock(false));
 	}
 
 }
