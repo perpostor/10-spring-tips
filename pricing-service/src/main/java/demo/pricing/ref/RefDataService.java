@@ -1,6 +1,6 @@
-package demo.ref;
+package demo.pricing.ref;
 
-import demo.ref.model.InstrumentMapping;
+import demo.pricing.ref.model.InstrumentMapping;
 
 import java.util.Set;
 

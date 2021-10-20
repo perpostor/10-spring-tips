@@ -1,7 +1,7 @@
-package demo.ref;
+package demo.pricing.ref;
 
 import demo.pricing.cache.RefDataCache;
-import demo.ref.model.InstrumentMapping;
+import demo.pricing.ref.model.InstrumentMapping;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

@@ -1,6 +1,7 @@
 package demo.ref;
 
-import demo.ref.model.InstrumentMapping;
+import demo.pricing.ref.RefDataService;
+import demo.pricing.ref.model.InstrumentMapping;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

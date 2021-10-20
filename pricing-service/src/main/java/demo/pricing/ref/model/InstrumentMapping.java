@@ -1,4 +1,4 @@
-package demo.ref.model;
+package demo.pricing.ref.model;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
