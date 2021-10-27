@@ -11,9 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-import static demo.pricing.strategy.Strategy.AGGRESSIVE;
-import static demo.pricing.strategy.Strategy.PLAYING_IT_SAFE;
-
 @Service
 @RequiredArgsConstructor
 public class PricingCalculator implements ApplicationEventPublisherAware {
@@ -22,10 +19,10 @@ public class PricingCalculator implements ApplicationEventPublisherAware {
   private final Map<String, PricingStrategy> pricingStrategies;
 
   @LogExecutionTime
-  public Price appraiseInstrument(final boolean beAggressive, final String instrumentCd) {
-    Price price = beAggressive ? pricingStrategies.get(AGGRESSIVE).suggestPrice(instrumentCd) : pricingStrategies.get(PLAYING_IT_SAFE).suggestPrice(instrumentCd);
+  public Price appraiseInstrument(final Strategy strategy, final String instrumentCd) {
+    Price price = pricingStrategies.get(strategy.toString()).determinePrice(instrumentCd);
 
-    eventPublisher.publishEvent(new PricingEvent(this, price));
+    eventPublisher.publishEvent(new PricingEvent(this, price, strategy));
 
     return price;
   }

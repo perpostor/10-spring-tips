@@ -4,14 +4,14 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
-import static demo.pricing.strategy.Strategy.AGGRESSIVE;
+import static demo.pricing.Strategy.StrategyConstants.AGGRESSIVE;
 
 @Service(AGGRESSIVE)
 public class AggressivePricingStrategy extends PricingStrategy {
 
   @Override
-  BigDecimal getPriceForInstrument(String instrumentCd) {
-    return BigDecimal.valueOf(Integer.MAX_VALUE);
+  BigDecimal getPriceForInstrument(BigDecimal coefficient, String instrumentCd) {
+    return BigDecimal.valueOf(Integer.MAX_VALUE).multiply(coefficient);
   }
 
 }

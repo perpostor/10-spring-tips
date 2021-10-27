@@ -4,13 +4,13 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
-import static demo.pricing.strategy.Strategy.PLAYING_IT_SAFE;
+import static demo.pricing.Strategy.StrategyConstants.SAFE;
 
-@Service(PLAYING_IT_SAFE)
+@Service(SAFE)
 public class PlayingItSafeStrategy extends PricingStrategy {
 
   @Override
-  BigDecimal getPriceForInstrument(String instrumentCd) {
-    return BigDecimal.TEN;
+  BigDecimal getPriceForInstrument(BigDecimal coefficient, String instrumentCd) {
+    return BigDecimal.TEN.multiply(coefficient);
   }
 }

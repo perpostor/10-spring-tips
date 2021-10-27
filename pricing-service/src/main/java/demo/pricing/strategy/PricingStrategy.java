@@ -4,16 +4,18 @@ import demo.pricing.cache.RefDataCache;
 import demo.pricing.model.Price;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 public abstract class PricingStrategy {
 
-  public Price suggestPrice(String instrumentCd) {
-    final String updatedInstrumentCd = RefDataCache.getInstrumentMappings().get(instrumentCd);
+  public Price determinePrice(String instrumentCd) {
+    final BigDecimal coefficient = Optional.ofNullable(RefDataCache.getInstrumentMappings().get(instrumentCd))
+            .orElse(BigDecimal.ONE);
 
-    BigDecimal priceForInstrument = getPriceForInstrument(updatedInstrumentCd);
+    BigDecimal priceForInstrument = getPriceForInstrument(coefficient, instrumentCd);
 
-    return new Price(updatedInstrumentCd, priceForInstrument);
+    return new Price(instrumentCd, priceForInstrument);
   }
 
-  abstract BigDecimal getPriceForInstrument(String instrumentCd);
+  abstract BigDecimal getPriceForInstrument(BigDecimal coefficient, String instrumentCd);
 }
