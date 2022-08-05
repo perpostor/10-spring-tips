@@ -1,7 +1,7 @@
 package demo.api;
 
 import demo.pricing.PricingCalculator;
-import demo.pricing.Strategy;
+import demo.pricing.strategy.Strategy;
 import demo.pricing.model.Price;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

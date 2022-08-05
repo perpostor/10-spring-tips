@@ -1,4 +1,4 @@
-package demo.pricing;
+package demo.pricing.strategy;
 
 public enum Strategy {
   AGGRESSIVE (StrategyConstants.AGGRESSIVE),

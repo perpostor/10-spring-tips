@@ -4,6 +4,7 @@ import demo.aspect.LogExecutionTime;
 import demo.pricing.model.Price;
 import demo.pricing.model.PricingEvent;
 import demo.pricing.strategy.PricingStrategy;
+import demo.pricing.strategy.Strategy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;

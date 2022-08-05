@@ -1,6 +1,6 @@
 package demo.pricing.model;
 
-import demo.pricing.Strategy;
+import demo.pricing.strategy.Strategy;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 

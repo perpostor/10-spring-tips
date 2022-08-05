@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.util.Random;
 
-import static demo.pricing.Strategy.StrategyConstants.WOLF_OF_WALL_STREET;
+import static demo.pricing.strategy.Strategy.StrategyConstants.WOLF_OF_WALL_STREET;
 
 @Component(WOLF_OF_WALL_STREET)
 public class WolfOfWallStreetStrategy extends PricingStrategy {
