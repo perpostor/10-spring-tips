@@ -2,6 +2,7 @@ package demo.api;
 
 import demo.quotation.QuotationService;
 import demo.quotation.ref.model.Quote;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ public class QuotationApi {
 
   private final QuotationService quotationService;
 
+  @Timed
   @GetMapping("/quote/{ccyPair}")
   public Quote getQuote(@PathVariable("ccyPair") final String ccyPair,
                                      @RequestParam("clientId") final String clientId,
