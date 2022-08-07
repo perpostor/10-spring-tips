@@ -4,9 +4,11 @@ import demo.quotation.QuotationService;
 import demo.quotation.ref.model.Quote;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
@@ -18,11 +20,7 @@ public class QuotationApi {
 
   @GetMapping("/quote/{ccyPair}")
   public Quote getQuote(@PathVariable("ccyPair") final String ccyPair,
-                                     @RequestParam("clientId") final String clientId,
-                                     @RequestParam Map<String, String> requestParams,
-                                     @RequestHeader Map<String, String> headers) {
-    LOGGER.info("Headers in the request: {}", headers);
-    LOGGER.info("Request params in the request: {}", requestParams);
+                                     @RequestParam("clientId") final String clientId) {
 
     return quotationService.getQuote(clientId, ccyPair);
   }
