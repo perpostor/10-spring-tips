@@ -1,8 +1,8 @@
 package demo.quotation;
 
 import demo.aspect.LogExecutionTime;
-import demo.quotation.model.QuotationEvent;
-import demo.quotation.ref.model.Quote;
+import demo.audit.QuotationEvent;
+import demo.quotation.model.Quote;
 import demo.quotation.strategy.MarkupTemplate;
 import demo.quotation.strategy.Strategy;
 import lombok.RequiredArgsConstructor;

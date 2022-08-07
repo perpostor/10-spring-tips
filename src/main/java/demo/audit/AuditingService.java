@@ -1,6 +1,5 @@
 package demo.audit;
 
-import demo.quotation.model.QuotationEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
