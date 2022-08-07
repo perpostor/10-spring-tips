@@ -6,6 +6,7 @@ import demo.quotation.ref.model.Quote;
 import demo.quotation.strategy.MarkupTemplate;
 import demo.quotation.strategy.Strategy;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.actuate.audit.listener.AuditApplicationEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.stereotype.Service;
@@ -22,11 +23,12 @@ public class QuotationService implements ApplicationEventPublisherAware {
   @LogExecutionTime
   public Quote getQuote(final String clientId, final String ccyPair) {
     var strategy = determineStrategy(clientId);
-    Quote rate = markupStrategies.get(strategy.toString()).markupQuote(ccyPair);
+    Quote quote = markupStrategies.get(strategy.toString()).markupQuote(ccyPair);
 
-    eventPublisher.publishEvent(new QuotationEvent(this, rate, clientId, strategy));
+    eventPublisher.publishEvent(new QuotationEvent(this, quote, clientId, strategy));
+    eventPublisher.publishEvent(new AuditApplicationEvent(clientId, "Quotation", Map.of("strategy", strategy, "quote", quote)));
 
-    return rate;
+    return quote;
   }
 
   private Strategy determineStrategy(final String clientId) {
