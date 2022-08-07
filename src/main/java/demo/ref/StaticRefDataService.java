@@ -1,22 +1,21 @@
 package demo.ref;
 
 import demo.pricing.ref.RefDataService;
-import demo.pricing.ref.model.InstrumentCoefficientMapping;
-import org.springframework.stereotype.Service;
-
+import demo.pricing.ref.model.Quote;
 import java.math.BigDecimal;
 import java.util.Set;
+import org.springframework.stereotype.Service;
 
 @Service
 public class StaticRefDataService implements RefDataService {
 
   @Override
-  public Set<InstrumentCoefficientMapping> getInstrumentCoefficientMappings() {
-    var instrumentMapping_APPL = new InstrumentCoefficientMapping("APPL", BigDecimal.valueOf(1.2));
-    var instrumentMapping_GOGL = new InstrumentCoefficientMapping("GOGL", BigDecimal.valueOf(1.1));
-    var instrumentMapping_AMZN = new InstrumentCoefficientMapping("AMZN", BigDecimal.valueOf(1.5));
-    var instrumentMapping_MSFT = new InstrumentCoefficientMapping("MSFT", BigDecimal.valueOf(1.1));
+  public Set<Quote> getQuotes() {
+    var quoteGBPUSD = new Quote("GBPUSD", BigDecimal.valueOf(1.31200), BigDecimal.valueOf(1.31210));
+    var quoteEURGBP = new Quote("EURGBP", BigDecimal.valueOf(0.91151), BigDecimal.valueOf(0.91156));
+    var quoteGBPPLN = new Quote("GBPPLN", BigDecimal.valueOf(4.98363), BigDecimal.valueOf(4.98540));
+    var quoteJPYRON = new Quote("JPYRON", BigDecimal.valueOf(0.03814), BigDecimal.valueOf(0.03891));
 
-    return Set.of(instrumentMapping_APPL, instrumentMapping_GOGL, instrumentMapping_AMZN, instrumentMapping_MSFT);
+    return Set.of(quoteEURGBP, quoteGBPUSD, quoteGBPPLN, quoteJPYRON);
   }
 }

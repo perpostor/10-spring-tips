@@ -1,7 +1,8 @@
 package demo.pricing.ref;
 
 import demo.pricing.cache.RefDataCache;
-import demo.pricing.ref.model.InstrumentCoefficientMapping;
+import demo.pricing.ref.model.Quote;
+import java.util.function.Function;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -21,11 +22,14 @@ public class StartupRefDataLoader implements CommandLineRunner {
   @Override
   public void run(String... args) {
     LOGGER.info("Loading reference data into the cache");
-    var rawInstrumentMappings = refDataService.getInstrumentCoefficientMappings();
-    Map<String, BigDecimal> instrumentMappings = rawInstrumentMappings
+
+    var rawCcyPairMappings = refDataService.getQuotes();
+    Map<String, Quote> ccyPairMappings = rawCcyPairMappings
             .stream()
-            .collect(Collectors.toMap(InstrumentCoefficientMapping::getInstrumentCd, InstrumentCoefficientMapping::getCoefficient));
-    RefDataCache.updateInstrumentMappings(instrumentMappings);
+            .collect(Collectors.toMap(Quote::ccyPair, Function.identity()));
+
+    RefDataCache.updateQuoteMappings(ccyPairMappings);
+
     LOGGER.info("Loaded reference data into the cache");
   }
 }

@@ -1,9 +1,9 @@
 package demo.pricing;
 
 import demo.aspect.LogExecutionTime;
-import demo.pricing.model.Price;
-import demo.pricing.model.PricingEvent;
-import demo.pricing.strategy.PricingStrategy;
+import demo.pricing.model.QuotationEvent;
+import demo.pricing.ref.model.Quote;
+import demo.pricing.strategy.MarkupTemplate;
 import demo.pricing.strategy.Strategy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
@@ -17,15 +17,24 @@ import java.util.Map;
 public class PricingCalculator implements ApplicationEventPublisherAware {
 
   private ApplicationEventPublisher eventPublisher;
-  private final Map<String, PricingStrategy> pricingStrategies;
+  private final Map<String, MarkupTemplate> pricingStrategies;
 
   @LogExecutionTime
-  public Price appraiseInstrument(final Strategy strategy, final String instrumentCd) {
-    Price price = pricingStrategies.get(strategy.toString()).determinePrice(instrumentCd);
+  public Quote getQuote(final String clientId, final String ccyPair) {
+    var strategy = determineStrategy(clientId);
+    Quote rate = pricingStrategies.get(strategy.toString()).markupQuote(ccyPair);
 
-    eventPublisher.publishEvent(new PricingEvent(this, price, strategy));
+    eventPublisher.publishEvent(new QuotationEvent(this, rate, clientId, strategy));
 
-    return price;
+    return rate;
+  }
+
+  private Strategy determineStrategy(final String clientId) {
+    return switch(clientId) {
+      case "1" -> Strategy.AGGRESSIVE;
+      case "2" -> Strategy.WOLF_OF_WALL_STREET;
+      default -> Strategy.SAFE;
+    };
   }
 
   @Override

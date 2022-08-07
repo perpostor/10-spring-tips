@@ -1,10 +1,10 @@
 package demo.pricing.ref;
 
-import demo.pricing.ref.model.InstrumentCoefficientMapping;
+import demo.pricing.ref.model.Quote;
 
 import java.util.Set;
 
 public interface RefDataService {
 
-  Set<InstrumentCoefficientMapping> getInstrumentCoefficientMappings();
+  Set<Quote> getQuotes();
 }

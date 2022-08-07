@@ -1,20 +1,20 @@
 package demo.pricing.cache;
 
-import java.math.BigDecimal;
+import demo.pricing.ref.model.Quote;
 import java.util.HashMap;
 import java.util.Map;
 
 public class RefDataCache {
 
-  private static final Map<String, BigDecimal> instrumentMappings = new HashMap<>();
+  private static final Map<String, Quote> quoteMappings = new HashMap<>();
 
-  public static void updateInstrumentMappings(final Map<String, BigDecimal> newInstrumentMappings) {
-    instrumentMappings.clear();
-    instrumentMappings.putAll(newInstrumentMappings);
+  public static void updateQuoteMappings(final Map<String, Quote> newQuoteMappings) {
+    quoteMappings.clear();
+    quoteMappings.putAll(newQuoteMappings);
   }
 
-  public static Map<String, BigDecimal> getInstrumentMappings() {
-    return instrumentMappings;
+  public static Map<String, Quote> getQuoteMappings() {
+    return quoteMappings;
   }
 
 }

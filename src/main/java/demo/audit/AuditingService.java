@@ -1,6 +1,6 @@
 package demo.audit;
 
-import demo.pricing.model.PricingEvent;
+import demo.pricing.model.QuotationEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,12 @@ import org.springframework.stereotype.Service;
 public class AuditingService {
 
   @EventListener
-  public void logAppraisal(PricingEvent event) {
-    LOGGER.info("{} was appraised to: {} by the {} strategy", event.getPrice().getInstrumentCd(), event.getPrice().getPrice(), event.getStrategy());
+  public void logAppraisal(QuotationEvent event) {
+    LOGGER.info(
+        "{} was appraised to Bid: {} and Offer: {} using the {} strategy",
+        event.getQuote().ccyPair(),
+        event.getQuote().bid(),
+        event.getQuote().offer(),
+        event.getStrategy());
   }
 }
