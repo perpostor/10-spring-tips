@@ -1,6 +1,6 @@
 package demo.quotation.cache;
 
-import demo.quotation.ref.model.Quote;
+import demo.quotation.model.Quote;
 import java.util.HashMap;
 import java.util.Map;
 
