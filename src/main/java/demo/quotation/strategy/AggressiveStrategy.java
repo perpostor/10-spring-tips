@@ -1,6 +1,6 @@
 package demo.quotation.strategy;
 
-import demo.quotation.ref.model.Quote;
+import demo.quotation.model.Quote;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

@@ -1,7 +1,7 @@
 package demo.quotation;
 
 import demo.aspect.LogExecutionTime;
-import demo.quotation.ref.model.Quote;
+import demo.quotation.model.Quote;
 import demo.quotation.strategy.MarkupTemplate;
 import demo.quotation.strategy.Strategy;
 import java.util.Map;
