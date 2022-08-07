@@ -1,4 +1,4 @@
-package demo.quotation.ref.model;
+package demo.quotation.model;
 
 import java.math.BigDecimal;
 

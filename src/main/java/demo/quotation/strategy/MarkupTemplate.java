@@ -1,7 +1,7 @@
 package demo.quotation.strategy;
 
 import demo.quotation.cache.RefDataCache;
-import demo.quotation.ref.model.Quote;
+import demo.quotation.model.Quote;
 import java.math.BigDecimal;
 import java.util.Optional;
 

@@ -1,7 +1,7 @@
 package demo.api;
 
 import demo.quotation.QuotationService;
-import demo.quotation.ref.model.Quote;
+import demo.quotation.model.Quote;
 import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,6 @@
-package demo.quotation.model;
+package demo.audit;
 
-import demo.quotation.ref.model.Quote;
+import demo.quotation.model.Quote;
 import demo.quotation.strategy.Strategy;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
