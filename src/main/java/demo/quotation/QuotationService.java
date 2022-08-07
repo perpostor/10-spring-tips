@@ -1,10 +1,9 @@
 package demo.quotation;
 
-import demo.aspect.LogExecutionTime;
+import demo.quotation.cache.RefDataCache;
 import demo.quotation.ref.model.Quote;
-import demo.quotation.strategy.MarkupTemplate;
-import demo.quotation.strategy.Strategy;
-import java.util.Map;
+import java.math.BigDecimal;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,21 +11,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class QuotationService {
 
-  private final Map<String, MarkupTemplate> markupStrategies;
-
-  @LogExecutionTime
-  public Quote getQuote(final String clientId, final String ccyPair) {
-    var strategy = determineStrategy(clientId);
-
-    return markupStrategies.get(strategy.toString()).markupQuote(ccyPair);
-  }
-
-  private Strategy determineStrategy(final String clientId) {
-    return switch(clientId) {
-      case "1" -> Strategy.AGGRESSIVE;
-      case "2" -> Strategy.WOLF_OF_WALL_STREET;
-      default -> Strategy.SAFE;
-    };
+  public Quote getQuote(final String ccyPair) {
+    return Optional.ofNullable(RefDataCache.getQuoteMappings().get(ccyPair))
+        .orElse(new Quote(ccyPair, BigDecimal.valueOf(0.9), BigDecimal.valueOf(0.91)));
   }
 
 }

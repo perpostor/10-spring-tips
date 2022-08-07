@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
@@ -19,10 +18,9 @@ public class QuotationApi {
   private final QuotationService quotationService;
 
   @GetMapping("/quote/{ccyPair}")
-  public Quote getQuote(@PathVariable("ccyPair") final String ccyPair,
-                                     @RequestParam("clientId") final String clientId) {
+  public Quote getQuote(@PathVariable("ccyPair") final String ccyPair) {
 
-    return quotationService.getQuote(clientId, ccyPair);
+    return quotationService.getQuote(ccyPair);
   }
 
 }
