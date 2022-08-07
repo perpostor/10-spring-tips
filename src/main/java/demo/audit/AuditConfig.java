@@ -1,4 +1,4 @@
-package demo.quotation.config;
+package demo.audit;
 
 import org.springframework.boot.actuate.audit.AuditEventRepository;
 import org.springframework.boot.actuate.audit.InMemoryAuditEventRepository;
