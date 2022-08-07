@@ -1,7 +1,7 @@
-package demo.pricing.model;
+package demo.quotation.model;
 
-import demo.pricing.ref.model.Quote;
-import demo.pricing.strategy.Strategy;
+import demo.quotation.ref.model.Quote;
+import demo.quotation.strategy.Strategy;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 

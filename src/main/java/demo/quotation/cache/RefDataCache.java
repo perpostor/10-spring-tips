@@ -1,6 +1,6 @@
-package demo.pricing.cache;
+package demo.quotation.cache;
 
-import demo.pricing.ref.model.Quote;
+import demo.quotation.ref.model.Quote;
 import java.util.HashMap;
 import java.util.Map;
 

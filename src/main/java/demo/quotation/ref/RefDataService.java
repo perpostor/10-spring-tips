@@ -1,6 +1,6 @@
-package demo.pricing.ref;
+package demo.quotation.ref;
 
-import demo.pricing.ref.model.Quote;
+import demo.quotation.ref.model.Quote;
 
 import java.util.Set;
 

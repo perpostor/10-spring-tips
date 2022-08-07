@@ -1,7 +1,7 @@
-package demo.pricing.strategy;
+package demo.quotation.strategy;
 
-import demo.pricing.cache.RefDataCache;
-import demo.pricing.ref.model.Quote;
+import demo.quotation.cache.RefDataCache;
+import demo.quotation.ref.model.Quote;
 import java.math.BigDecimal;
 import java.util.Optional;
 

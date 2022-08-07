@@ -1,7 +1,7 @@
 package demo.api;
 
-import demo.pricing.PricingCalculator;
-import demo.pricing.ref.model.Quote;
+import demo.quotation.QuotationService;
+import demo.quotation.ref.model.Quote;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class QuotationApi {
 
-  private final PricingCalculator pricingCalculator;
+  private final QuotationService quotationService;
 
   @GetMapping("/quote/{ccyPair}")
   public Quote getQuote(@PathVariable("ccyPair") final String ccyPair,
@@ -24,7 +24,7 @@ public class QuotationApi {
     LOGGER.info("Headers in the request: {}", headers);
     LOGGER.info("Request params in the request: {}", requestParams);
 
-    return pricingCalculator.getQuote(clientId, ccyPair);
+    return quotationService.getQuote(clientId, ccyPair);
   }
 
 }

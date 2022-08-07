@@ -1,11 +1,11 @@
-package demo.pricing.strategy;
+package demo.quotation.strategy;
 
-import demo.pricing.ref.model.Quote;
+import demo.quotation.ref.model.Quote;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
-import static demo.pricing.strategy.Strategy.StrategyConstants.SAFE;
+import static demo.quotation.strategy.Strategy.StrategyConstants.SAFE;
 
 @Service(SAFE)
 public class PlayingItSafeStrategy extends MarkupTemplate {

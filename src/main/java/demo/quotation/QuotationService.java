@@ -1,10 +1,10 @@
-package demo.pricing;
+package demo.quotation;
 
 import demo.aspect.LogExecutionTime;
-import demo.pricing.model.QuotationEvent;
-import demo.pricing.ref.model.Quote;
-import demo.pricing.strategy.MarkupTemplate;
-import demo.pricing.strategy.Strategy;
+import demo.quotation.model.QuotationEvent;
+import demo.quotation.ref.model.Quote;
+import demo.quotation.strategy.MarkupTemplate;
+import demo.quotation.strategy.Strategy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
@@ -14,15 +14,15 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class PricingCalculator implements ApplicationEventPublisherAware {
+public class QuotationService implements ApplicationEventPublisherAware {
 
   private ApplicationEventPublisher eventPublisher;
-  private final Map<String, MarkupTemplate> pricingStrategies;
+  private final Map<String, MarkupTemplate> markupStrategies;
 
   @LogExecutionTime
   public Quote getQuote(final String clientId, final String ccyPair) {
     var strategy = determineStrategy(clientId);
-    Quote rate = pricingStrategies.get(strategy.toString()).markupQuote(ccyPair);
+    Quote rate = markupStrategies.get(strategy.toString()).markupQuote(ccyPair);
 
     eventPublisher.publishEvent(new QuotationEvent(this, rate, clientId, strategy));
 

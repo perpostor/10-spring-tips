@@ -1,7 +1,7 @@
 package demo.ref;
 
-import demo.pricing.ref.RefDataService;
-import demo.pricing.ref.model.Quote;
+import demo.quotation.ref.RefDataService;
+import demo.quotation.ref.model.Quote;
 import java.math.BigDecimal;
 import java.util.Set;
 import org.springframework.stereotype.Service;
