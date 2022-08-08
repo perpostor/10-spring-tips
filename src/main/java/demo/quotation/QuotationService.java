@@ -22,11 +22,11 @@ public class QuotationService implements ApplicationEventPublisherAware {
   @LogExecutionTime
   public Quote getQuote(final String clientId, final String ccyPair) {
     var strategy = determineStrategy(clientId);
-    Quote rate = markupStrategies.get(strategy.toString()).markupQuote(ccyPair);
+    Quote quote = markupStrategies.get(strategy.toString()).markupQuote(ccyPair);
 
-    eventPublisher.publishEvent(new QuotationEvent(this, rate, clientId, strategy));
+    eventPublisher.publishEvent(new QuotationEvent(this, quote, clientId, strategy));
 
-    return rate;
+    return quote;
   }
 
   private Strategy determineStrategy(final String clientId) {
