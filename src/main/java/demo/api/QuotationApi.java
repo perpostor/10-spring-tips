@@ -19,10 +19,10 @@ public class QuotationApi {
   private final QuotationService quotationService;
 
   @GetMapping("/quote/{ccyPair}")
-  public Quote getQuote(@PathVariable("ccyPair") final String ccyPair,
-                                     @RequestParam(value = "clientId", defaultValue = "") final String clientId) {
+  public Quote getQuote(
+      @PathVariable("ccyPair") final String ccyPair,
+      @RequestParam(value = "clientId", defaultValue = "") final String clientId) {
 
     return quotationService.getQuote(clientId, ccyPair);
   }
-
 }
