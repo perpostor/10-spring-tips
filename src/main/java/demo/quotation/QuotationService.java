@@ -1,6 +1,5 @@
 package demo.quotation;
 
-import demo.aspect.LogExecutionTime;
 import demo.quotation.model.Quote;
 import demo.quotation.strategy.MarkupTemplate;
 import demo.quotation.strategy.Strategy;
@@ -14,7 +13,6 @@ public class QuotationService {
 
   private final Map<String, MarkupTemplate> markupStrategies;
 
-  @LogExecutionTime
   public Quote getQuote(final String clientId, final String ccyPair) {
     var strategy = determineStrategy(clientId);
 
