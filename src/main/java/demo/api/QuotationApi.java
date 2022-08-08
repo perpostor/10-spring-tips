@@ -20,7 +20,7 @@ public class QuotationApi {
 
   @GetMapping("/quote/{ccyPair}")
   public Quote getQuote(@PathVariable("ccyPair") final String ccyPair,
-                                     @RequestParam("clientId") final String clientId) {
+                                     @RequestParam(value = "clientId", defaultValue = "") final String clientId) {
 
     return quotationService.getQuote(clientId, ccyPair);
   }
